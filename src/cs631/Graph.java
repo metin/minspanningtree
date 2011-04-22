@@ -21,6 +21,7 @@ public class Graph {
 
 	public void prepare()
 	{
+		/*
 		Random randx = new Random(); 
 		Random randy = new Random(); 
 		Iterator<Node> i = nodes.iterator();
@@ -43,7 +44,43 @@ public class Graph {
 			}
 			node.y =y;
 		}
+		*/
 		
+		int curx = 50;
+		int cury = 50;
+		boolean xChanged = true;
+		boolean yChanged = true;
+		boolean newRow = false;
+
+		Iterator<Node> i = nodes.iterator();
+		while(i.hasNext())
+		{
+			Node node = i.next();
+			
+			if(curx > 700)
+			{
+				curx = 50;
+				if(xChanged)
+					curx += 20;
+				cury += 180;
+				newRow = true;
+			}
+			
+			node.x = curx;
+			if(!xChanged)
+				node.x += 50;
+			
+			node.y = cury;
+			if(!yChanged)
+				node.y += 50;
+			
+			xChanged = !xChanged;
+			yChanged = !yChanged;
+
+			curx += 150;
+			newRow = false;
+			
+		}
 		
 		Collections.sort(edges);
 	}
