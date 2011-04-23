@@ -2,7 +2,7 @@
 import java.io.*;
 import javax.swing.*;
 
-import cs631.*;
+import cs610.*;
 
 
 public class Program {

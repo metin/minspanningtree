@@ -1,11 +1,39 @@
-5 9
-e0,e1,e2,e3,e4
-e0 e1 4
-e0 e2 4
-e0 e3 3
-e0 e4 6
-e1 e2 3
-e1 e4 7
-e2 e3 2
-e3 e4 5
-e4 e2 5
+A B C D E
+F G H I J K
+L M N O P
+#EDGES
+A B 4
+B C 6
+C D 8
+D E 3
+F G 4
+G H 5
+H I 7
+I J 4
+J K 3
+L M 4
+M N 6
+N O 8
+O P 2
+A F 4
+F L 5
+A G 6
+G N 7
+E K 5
+P K 4
+B G 6
+G M 4
+G L 6
+B H 5
+C I 5
+D I 7
+E J 3
+J O 5
+J P 8
+H N 4
+H O 6
+C H 7 
+E I 3
+I O 5
+
+
