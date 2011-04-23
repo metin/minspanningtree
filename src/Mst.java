@@ -3,7 +3,7 @@ import javax.swing.*;
 
 import cs610.*;
 
-public class Msp {
+public class Mst {
 
   public static void main(String[] args) {
 
