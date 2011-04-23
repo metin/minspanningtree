@@ -4,7 +4,7 @@ H I J
 #EDGES
 A B 4
 B C 5
-D A 8
+D A 3
 D E 6
 D H 3
 H I 7
@@ -16,7 +16,7 @@ B E 9
 C F 6
 C G 7
 E J 8
-F J 9
-E H 5
+F J 2
+E H 4
 A E 3
 

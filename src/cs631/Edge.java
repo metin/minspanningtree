@@ -8,8 +8,6 @@ public class Edge implements Comparable<Edge> {
 	public int weight;
 	public boolean selected = false;
 
-	
-	
 	public Edge(Node pLeft, Node pRight, int pWeight)
 	{
 		this.left = pLeft;
@@ -30,11 +28,6 @@ public class Edge implements Comparable<Edge> {
 	public void select()
 	{
 		this.selected = true;
-	}
-	
-	public void unSelect()
-	{
-		this.selected = false;
 	}
 	
 	public boolean isSelected()

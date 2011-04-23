@@ -13,7 +13,6 @@ public class Graph {
 	public ArrayList<Node> nodes = new ArrayList<Node>();
 	public ArrayList<Edge> edges = new ArrayList<Edge>();
 	public ArrayList<ArrayList<Node>> lines = new ArrayList<ArrayList<Node>>();
-	TreeMap<String, Node> tree = new TreeMap<String, Node>();;
 
 	public int width;
 	public int height;
@@ -56,11 +55,11 @@ public class Graph {
 
 	public void kruskal()
 	{
+		sortEdges();
 		ArrayList<Edge> mst = new ArrayList<Edge>();  
 		for (Iterator<Edge> it = edges.iterator(); it.hasNext(); )
 	    {
 			Edge e = it.next();
-			System.out.println("MST: -" + e.left.head.name + "="+ e.right.head.name);
 			if(e.left.head != e.right.head)
 			{
 				mst.add(e);
@@ -92,7 +91,6 @@ public class Graph {
 		else
 			lines.add(curLine);
 		curLine.add(node);
-		tree.put(node.name, node);
 	}
 	
 	public void addEdge(Node left, Node right, int weight)
