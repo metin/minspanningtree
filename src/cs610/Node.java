@@ -6,15 +6,6 @@ public class Node {
 	public int y;
 	public Node head, tail, next;
 	
-	public Node(String pName, int px, int py) 
-	{
-		this.name = pName;
-		this.x = px;
-		this.y = py;
-        next = null;      
-        head = tail = this;
-	}
-
 	public Node(String pName) 
 	{
 		this.name = pName;
