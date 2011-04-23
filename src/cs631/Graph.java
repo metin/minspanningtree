@@ -5,13 +5,21 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
 
 public class Graph {
 	public ArrayList<Node> nodes = new ArrayList<Node>();
 	public ArrayList<Edge> edges = new ArrayList<Edge>();
+	public ArrayList<ArrayList<Node>> lines = new ArrayList<ArrayList<Node>>();
+	TreeMap<String, Node> tree = new TreeMap<String, Node>();;
+
 	public int width;
 	public int height;
-	
+	public int xStep = 140;
+	public int yStep = 100;
+
 	
 	public Graph(int pWidth, int pHeight)
 	{
@@ -19,101 +27,74 @@ public class Graph {
 		height = pHeight;	
 	}
 
-	public void prepare()
+	public void prepareNodes()
 	{
-		/*
-		Random randx = new Random(); 
-		Random randy = new Random(); 
-		Iterator<Node> i = nodes.iterator();
+		int xCurrent = 50;
+		int yCurrent = 50;
+		Iterator<ArrayList<Node>> i = lines.iterator();
 		while(i.hasNext())
 		{
-			Node node = i.next();
-			int x = randx.nextInt(width);
-			while(!isXValid(x))
-			{
-				x = randx.nextInt(width);
-				System.out.println(x);
-			}
-			node.x = x;
+			ArrayList<Node> line = i.next();
+			Iterator<Node> li = line.iterator();
 			
-			int y = randy.nextInt(height);
-			while(!isYValid(y))
+			while(li.hasNext())
 			{
-				y = randy.nextInt(height);
-				System.out.println(y);
+				Node node = li.next();
+				node.x = xCurrent;
+				node.y = yCurrent;
+				xCurrent += xStep;
 			}
-			node.y =y;
+			yCurrent += 2 * yStep;
+			xCurrent = 50;
 		}
-		*/
-		
-		int curx = 50;
-		int cury = 50;
-		boolean xChanged = true;
-		boolean yChanged = true;
-		boolean newRow = false;
-
-		Iterator<Node> i = nodes.iterator();
-		while(i.hasNext())
-		{
-			Node node = i.next();
-			
-			if(curx > 700)
-			{
-				curx = 50;
-				if(xChanged)
-					curx += 20;
-				cury += 180;
-				newRow = true;
-			}
-			
-			node.x = curx;
-			if(!xChanged)
-				node.x += 50;
-			
-			node.y = cury;
-			if(!yChanged)
-				node.y += 50;
-			
-			xChanged = !xChanged;
-			yChanged = !yChanged;
-
-			curx += 150;
-			newRow = false;
-			
-		}
-		
+	}
+	
+	public void sortEdges()
+	{
 		Collections.sort(edges);
 	}
-	
-	public boolean isXValid(int x)
+
+	public void kruskal()
 	{
-		Iterator<Node> i = nodes.iterator();
-		while(i.hasNext())
-		{
-			Node node = i.next();
-			if((x <= 30) || (x > width-10))
-				return false;
-		}
-		return true;
+		ArrayList<Edge> mst = new ArrayList<Edge>();  
+		for (Iterator<Edge> it = edges.iterator(); it.hasNext(); )
+	    {
+			Edge e = it.next();
+			System.out.println("MST: -" + e.left.head.name + "="+ e.right.head.name);
+			if(e.left.head != e.right.head)
+			{
+				mst.add(e);
+				union(e.left, e.right);
+			}
+	    }
+		
+		for (Iterator<Edge> it = mst.iterator(); it.hasNext(); )
+	    {
+			it.next().select();
+	    }
+		
+	}
+	
+	public void union(Node left, Node right)
+	{
+		left.head.tail.next = right.head;   
+	    left.head.tail = right.head.tail;   
+	    for (Node v = right.head; v!=null; v = v.next)
+	      v.head = left.head;            
 	}
 
-	public boolean isYValid(int y)
-	{
-		Iterator<Node> i = nodes.iterator();
-		while(i.hasNext())
-		{
-			Node node = i.next();
-			if( (y <= 30 ) || (y > height -10) )
-				return false;
-		}
-		return true;
-	}
-	
-	public void addNode(Node node)
+	public void addNode(Node node, int index)
 	{
 		nodes.add(node);
+		ArrayList<Node> curLine = new ArrayList<Node>();
+		if(lines.size() > index)
+			curLine = lines.get(index);
+		else
+			lines.add(curLine);
+		curLine.add(node);
+		tree.put(node.name, node);
 	}
-
+	
 	public void addEdge(Node left, Node right, int weight)
 	{
 		Edge e = new Edge(left, right, weight);

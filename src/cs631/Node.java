@@ -4,16 +4,15 @@ public class Node {
 	public String name;
 	public int x;
 	public int y;
-	public int w;
-	public int h;
+	public Node head, tail, next;
 	
 	public Node(String pName, int px, int py) 
 	{
 		this.name = pName;
 		this.x = px;
 		this.y = py;
-		h = 5;
-		w = 5;
+        next = null;      
+        head = tail = this;
 	}
 
 	public Node(String pName) 
@@ -21,6 +20,8 @@ public class Node {
 		this.name = pName;
 		x = 0;
 		y = 0;
+        next = null;      
+        head = tail = this;
 	}
 	
 	@Override
