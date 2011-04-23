@@ -1,8 +1,6 @@
 package cs610;
 
 import java.awt.*;
-import java.awt.geom.Line2D;
-
 import javax.swing.*;
 
 public class MainWindow extends JFrame {
@@ -15,10 +13,21 @@ public class MainWindow extends JFrame {
   }
 
   public void paint(Graphics g) {
+    printCost(g);
     for (int i = 0; i < this.graph.nodes.size(); i++)
       paintNode(g, this.graph.nodes.get(i));
     for (int i = 0; i < this.graph.edges.size(); i++)
       paintEdge(g, this.graph.edges.get(i));
+  }
+  
+  public void printCost(Graphics g)
+  {
+    g.setColor(Color.blue);
+    Font f = g.getFont();
+    Font nf = new Font(f.getName(), Font.BOLD, 16);
+    g.setFont(nf);
+    g.drawString("COST:" + graph.mstCost, 50, 50);
+    g.setFont(f);
   }
 
   public void paintNode(Graphics g, Node n) {

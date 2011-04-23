@@ -11,7 +11,8 @@ public class Graph {
 
   public int xStep = 140;
   public int yStep = 80;
-
+  public int mstCost = 0;
+  
   public Graph() {
     nodes = new ArrayList<Node>();
     edges = new ArrayList<Edge>();
@@ -20,7 +21,7 @@ public class Graph {
 
   public void prepareNodes() {
     int xCurrent = 50;
-    int yCurrent = 50;
+    int yCurrent = 80;
     Iterator<ArrayList<Node>> i = lines.iterator();
     while (i.hasNext()) {
       ArrayList<Node> line = i.next();
@@ -53,7 +54,9 @@ public class Graph {
     }
 
     for (Iterator<Edge> it = mst.iterator(); it.hasNext();) {
-      it.next().select();
+      Edge sel = it.next();
+      sel.select();
+      mstCost += sel.weight;
     }
 
   }

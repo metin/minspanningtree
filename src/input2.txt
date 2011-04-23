@@ -1,0 +1,30 @@
+A B C D
+E F G H I 
+J K L M
+#EDGES
+A B 4
+A E 6
+A F 3
+B G 7
+B F 5
+B C 8
+C D 9
+C G 4
+D G 6
+D I 7
+D H 5
+E F 8
+E J 3
+F J 5 
+F K 6
+F G 7
+G L 6
+G H 5
+G M 7
+H I 8
+H M 4
+J K 6
+K L 5
+L M 8
+M I 7
+
