@@ -41,10 +41,10 @@ public class Msp {
             break;
           String[] arr = line.split(" ");
           System.out.println("Graph Line " + index + ":  " + line);
-          Node n = null;
-          Node node = null;
+          Vertex n = null;
+          Vertex node = null;
           for (int j = 0; j < arr.length; j++) {
-            n = new Node(arr[j]);
+            n = new Vertex(arr[j]);
             node = g.findNode(n);
             if (node == null)
               g.addNode(n, index);
@@ -56,10 +56,10 @@ public class Msp {
           String[] arr = line.split(" ");
           System.out.println("[" + arr[0] + " - " + arr[1] + "] - Cost: "
               + arr[2]);
-          Node n = new Node(arr[0]);
-          Node left = g.findNode(n);
-          n = new Node(arr[1]);
-          Node right = g.findNode(n);
+          Vertex n = new Vertex(arr[0]);
+          Vertex left = g.findNode(n);
+          n = new Vertex(arr[1]);
+          Vertex right = g.findNode(n);
           g.addEdge(left, right, Integer.parseInt(arr[2]));
         }
       } finally {

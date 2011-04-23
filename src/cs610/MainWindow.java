@@ -30,7 +30,7 @@ public class MainWindow extends JFrame {
     g.setFont(f);
   }
 
-  public void paintNode(Graphics g, Node n) {
+  public void paintNode(Graphics g, Vertex n) {
     FontMetrics fm = g.getFontMetrics();
     int x = n.x;
     int y = n.y;

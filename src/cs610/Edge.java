@@ -3,12 +3,12 @@ package cs610;
 import java.awt.Color;
 
 public class Edge implements Comparable<Edge> {
-  public Node left;
-  public Node right;
+  public Vertex left;
+  public Vertex right;
   public int weight;
   public boolean selected = false;
 
-  public Edge(Node pLeft, Node pRight, int pWeight) {
+  public Edge(Vertex pLeft, Vertex pRight, int pWeight) {
     this.left = pLeft;
     this.right = pRight;
     this.weight = pWeight;
