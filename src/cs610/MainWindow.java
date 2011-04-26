@@ -1,6 +1,8 @@
 package cs610;
 
 import java.awt.*;
+import java.awt.geom.Line2D;
+
 import javax.swing.*;
 
 public class MainWindow extends JFrame {
@@ -51,9 +53,12 @@ public class MainWindow extends JFrame {
 
   public void paintEdge(Graphics g, Edge e) {
     g.setColor(e.getColor());
-    g.drawLine(e.left.x, e.left.y, e.right.x, e.right.y);
+    Graphics2D g2 = (Graphics2D)g;
+    g2.setStroke(new BasicStroke(2, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL, 15.0f, new float[] {10,10}, 5));
+    if(e.selected) g2.setStroke(new BasicStroke(3));
+    g2.drawLine(e.left.x, e.left.y, e.right.x, e.right.y);
+    g2.setStroke(new BasicStroke(1));
     g.setColor(Color.black);
-    
     Font f = g.getFont();
     Font nf = new Font(f.getName(), Font.BOLD, 14);
     g.setFont(nf);

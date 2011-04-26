@@ -31,7 +31,7 @@ public class Edge implements Comparable<Edge> {
   }
 
   public Color getColor() {
-    return isSelected() ? Color.red : Color.lightGray;
+    return isSelected() ? Color.black : Color.gray;
   }
 
   @Override
